@@ -22,10 +22,18 @@ def test(seqs):
 def ctoi(char):
     return ord(char) - 97
 
-def display(seqs):
-    seq_mat = np.zeros((26,26))
-    for alpha in seqs:
-        seq_mat[ctoi(alpha[0]), ctoi(alpha[1])] += 1
+def seq_to_idx(seq):
+    """
+    sequence to the index which we will index into the matrix with
+    """
+    pass
+
+def display(seqs, order=2):
+    #extend this for arbitrary order > 1
+    dims = (26 ** (order - 1), 26 ** (order - 1))
+    seq_mat = np.zeros(dims)
+    for seq in seqs:
+        seq_mat[seq_to_order(seq)] += 1
     plt.matshow(seq_mat)
     plt.show()
 
